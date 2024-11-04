@@ -11,6 +11,7 @@ on:
 permissions:
   contents: read  # Apenas leitura para conteúdos
   id-token: write  # Inclua outras permissões conforme necessário
+  statuses: write  # Permissão para atualizar status dos checks
   
 jobs:
   build-and-test:
