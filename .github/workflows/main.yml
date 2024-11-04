@@ -1,6 +1,5 @@
 name: MeuPipeline
 
-
 on:
   push:
     branches:
@@ -9,10 +8,10 @@ on:
     branches:
       - main
 permissions:
-  contents: read  # Apenas leitura para conteúdos
-  id-token: write  # Inclua outras permissões conforme necessário
-  statuses: write  # Permissão para atualizar status dos checks
-  
+  contents: read # Apenas leitura para conteúdos
+  id-token: write # Inclua outras permissões conforme necessário
+  statuses: write # Permissão para atualizar status dos checks
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -24,14 +23,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
 
       - name: Install dependencies
         run: npm install
 
       - name: Run tests
         run: npm run test
-        
+
       - name: Build project
         run: npm run build
 
@@ -51,4 +50,3 @@ jobs:
         uses: super-linter/super-linter@v7.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
