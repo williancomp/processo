@@ -26,13 +26,7 @@ jobs:
 
       - name: Run tests
         run: npm run test
-
-      - name: Super-Linter
-        uses: super-linter/super-linter@v7.1.0
-        env:
-          # To report GitHub Actions status checks
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            
+        
       - name: Build project
         run: npm run build
 
@@ -41,4 +35,15 @@ jobs:
         with:
           name: nuxt-build
           path: .nuxt/
+  lint:
+      runs-on: ubuntu-latest
+      needs: build-and-test
+      steps:
+        - name: Checkout repository
+          uses: actions/checkout@v3
+  
+        - name: Run Super-Linter
+          uses: github/super-linter@v7.1.0
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
