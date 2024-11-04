@@ -7,5 +7,5 @@ describe('HelloWorld', () => {
   it('component renders Hello world properly', () => {
     const wrapper = mount(HelloWorld)
     expect(wrapper.text()).toContain('Hello world')
-  })
-})
+  });
+});
